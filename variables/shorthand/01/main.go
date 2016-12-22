@@ -32,4 +32,18 @@ func main() {
 	fmt.Printf("%T \n", f)
 	fmt.Printf("%T \n", g)
 	fmt.Printf("%T \n", i)
+
+	/* Zero Values */
+	var j int
+	var k string
+	var l float64
+	var m bool
+
+	fmt.Printf("%v \n", j)
+	fmt.Printf("%v \n", k)
+	fmt.Printf("%v \n", l)
+	fmt.Printf("%v \n", m)
+
 }
+
+/*Use this method */
