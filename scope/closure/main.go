@@ -28,4 +28,5 @@ func main() {
 
 	fmt.Printf("%v\n", increment2())
 	fmt.Printf("%v\n", increment2())
+
 }
