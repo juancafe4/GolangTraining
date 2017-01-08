@@ -18,4 +18,8 @@ func main() {
 	fmt.Println(x)
 	fmt.Println(len(x))
 	fmt.Println(x[42])
+
+	// for _, i := range x {
+	// 	fmt.Println(i)
+	// }
 }
