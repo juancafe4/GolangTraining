@@ -19,15 +19,22 @@ func main() {
 
 	fmt.Printf("After deleting... %v\n", m)
 
-	val, ok := m["k1"]
+	val, exists := m["k1"]
 
 	fmt.Println("Val: ", val)
-	fmt.Println("Ok?: ", ok)
+	fmt.Println("exists?: ", exists)
 
-	var myGreeting = map[string]string{}
+	var myGreeting = map[string]string{
+		"Jane": "Nice",
+	}
 
 	myGreeting["Tim"] = "Good Morning"
 	myGreeting["Jenny"] = "Bonjour"
 
 	fmt.Println(myGreeting)
+
+	// Check if value exists
+	if _, exists := myGreeting["Tim"]; exists {
+		fmt.Println("It exists!")
+	}
 }
