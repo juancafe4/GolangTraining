@@ -37,4 +37,17 @@ func main() {
 	if _, exists := myGreeting["Tim"]; exists {
 		fmt.Println("It exists!")
 	}
+
+	//inner maps
+	elements := map[string]map[string]int{
+		"Luke": map[string]int{
+			"Nothing": 1,
+		},
+	}
+
+	fmt.Println(elements)
+
+	for key, val := range myGreeting {
+		fmt.Printf("Key: %v Value: %v\n", key, val)
+	}
 }
