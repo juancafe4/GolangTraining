@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 )
 
@@ -8,19 +9,19 @@ import (
 type foo int
 
 type Person struct {
-	first string
-	last  string
-	age   int
+	First string
+	Last  string
+	Age   int // non exported method when lowercase
 }
 
 type Student struct {
 	Person
-	gpa float64
+	Gpa float64 // exported method
 }
 
 // The reciever Person struct is getting thaat method
 func (p Person) fullName() string {
-	return p.first + "  " + p.last
+	return p.First + "  " + p.Last
 }
 
 //Overriding
@@ -38,7 +39,7 @@ func main() {
 
 	p1 := Person{"James", "Bond", 20}
 	var p2 Person
-	fmt.Println(p1.first, p1.last, p1.age)
+	fmt.Println(p1.First, p1.Last, p1.Age)
 	fmt.Println(p2)
 	student := Student{Person{"John", "Smith", 23}, 2.3}
 	// student := Student{
@@ -60,6 +61,21 @@ func main() {
 	//pointers
 	p3 := &Person{"John", "Lemon", 34}
 
-	fmt.Println(p3.first)
+	fmt.Println(p3.First)
 	fmt.Println(p3)
+
+	bs, _ := json.Marshal(p1)
+	fmt.Println(bs)
+	fmt.Printf("%T\n", bs)
+	fmt.Printf("%v\n", string(bs))
+
+	// fields must exported so they can exported to JSON
+
+	jsonPerson := []byte(`{"First": "John", "Last": "Cena", "Age": 34}`)
+
+	var p4 Person
+
+	json.Unmarshal(jsonPerson, &p4)
+
+	fmt.Println("Printing person 4", p4)
 }
