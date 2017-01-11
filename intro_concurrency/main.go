@@ -2,12 +2,18 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 	"sync"
 	"time"
 )
 
 var wg sync.WaitGroup
 
+// Special time to make some set up befero excecuting
+func init() {
+	fmt.Println("Number of cores ", runtime.NumCPU())
+	runtime.GOMAXPROCS(runtime.NumCPU())
+}
 func main() {
 	wg.Add(2)
 	go foo() // go makes run async
