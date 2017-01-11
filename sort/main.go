@@ -24,6 +24,13 @@ func main() {
 	s := []string{"Zeno", "John", "Al", "Jenny"}
 
 	sort.StringSlice(s).Sort()
+	// or sort.Strings(S)
 	fmt.Println("String slice sorted", s)
-	// n := []int{7, 4, 8, 2, 9, 19, 12, 32, 3}
+
+	n := []int{7, 4, 8, 2, 9, 19, 12, 32, 3}
+	sort.Sort(sort.Reverse(sort.IntSlice(n)))
+
+	fmt.Println("Integers sorted: ", n)
+	// Sort reverse impletes the interface to reverse sort
+
 }
