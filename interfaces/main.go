@@ -58,7 +58,7 @@ func main() {
 // 	return math.Pi * c.radius * c.radius
 // }
 
-// can pass like a value or a pointer area(c) or area(&c)
+// can pass like a value or a pointer info(c) or info(&c)
 
 // Pointer receiver
 
@@ -66,4 +66,8 @@ func main() {
 // 	return math.Pi * c.radius * c.radius
 // }
 
-// pass be must as an address area(&c) or use pointer
+// pass be must as an address info(&c) or use pointer
+// because the pointer receiver might be pointing to many circles
+// and the compoler does not know where to convert is pointing when you use a value
+// In value receiver the compiler knows where exactly where the circle is pointing
+// because is just a value with a fixed address.
