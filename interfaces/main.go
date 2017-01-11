@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"reflect"
 )
 
 type Square struct {
@@ -23,9 +24,15 @@ type Shape interface {
 	area() float64
 }
 
+func info(s Shape) {
+	fmt.Println(s)
+	fmt.Println(s.area())
+	fmt.Println(reflect.TypeOf(s).String() == "main.Circle")
+}
 func main() {
 	s := Square{10}
 	c := Circle{5}
-	fmt.Println(s.area())
-	fmt.Println(c.area())
+	info(s)
+	info(c)
+
 }
