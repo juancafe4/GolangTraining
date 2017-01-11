@@ -24,6 +24,10 @@ type Shape interface {
 	area() float64
 }
 
+// Empty interface
+func shape(a interface{}) {
+	fmt.Println(a)
+}
 func info(s Shape) {
 	fmt.Println(s)
 	fmt.Println(s.area())
@@ -35,4 +39,13 @@ func main() {
 	info(s)
 	info(c)
 
+	shape(s)
+
+	ex := make([]interface{}, 3)
+
+	ex[0] = "Hello"
+	ex[1] = true
+	ex[2] = 34
+
+	fmt.Println(ex)
 }
