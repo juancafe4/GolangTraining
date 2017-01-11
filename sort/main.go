@@ -21,7 +21,9 @@ func main() {
 	fmt.Println(studyGroup)
 	sort.Sort(studyGroup)
 	fmt.Println(studyGroup)
-	// s := []string{"Zeno", "John", "Al", "Jenny"}
+	s := []string{"Zeno", "John", "Al", "Jenny"}
 
+	sort.StringSlice(s).Sort()
+	fmt.Println("String slice sorted", s)
 	// n := []int{7, 4, 8, 2, 9, 19, 12, 32, 3}
 }
