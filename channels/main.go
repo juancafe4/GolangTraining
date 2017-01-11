@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 func main() {
@@ -13,13 +12,18 @@ func main() {
 		for i := 0; i < 10; i++ {
 			c <- i
 		}
+		fmt.Printf("Closing channel %T\n", c)
+		close(c)
 	}()
 
-	go func() {
-		for {
-			fmt.Println(<-c)
-		}
-	}()
+	// go func() {
+	// 	for {
+	// 		fmt.Println(<-c)
+	// 	}
+	// }()
 
-	time.Sleep(time.Second)
+	for n := range c {
+		fmt.Println(n)
+	}
+	//time.Sleep(time.Second)
 }
