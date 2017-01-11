@@ -43,4 +43,6 @@ func main() {
 	fmt.Printf("%T\n", num3)
 	fmt.Printf("%T\n", num3.(int))
 	//fmt.Printf("%T\n", int(num3)) Cannot do that use assertion
+	//fmt.Printf("%v\n", num3+5) // not the same type
+	fmt.Printf("%v\n", num3.(int)+5)
 }
