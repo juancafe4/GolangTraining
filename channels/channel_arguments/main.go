@@ -3,18 +3,20 @@ package main
 import "fmt"
 
 func main() {
-	c := incrementor()
-	cSum := puller(c)
-	n := <-cSum
+	c1 := incrementor("Foo")
+	c2 := incrementor("Bar")
+	c3 := puller(c1)
+	c4 := puller(c2)
 
-	fmt.Println(n)
+	fmt.Println("Sums", <-c3, <-c4)
 }
 
-func incrementor() <-chan int {
+func incrementor(s string) <-chan int {
 	out := make(chan int)
 	go func() {
-		for i := 0; i < 10; i++ {
-			out <- i
+		for i := 0; i < 20; i++ {
+			out <- 1
+			fmt.Println(s, i)
 		}
 		close(out)
 	}()
