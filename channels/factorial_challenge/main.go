@@ -5,22 +5,52 @@ import (
 )
 
 func main() {
-	c := factorial(4)
-	for n := range c {
+	in := gen()
+	f := factorial(in)
+	for n := range f {
 		fmt.Println(n)
 	}
 }
 
-func factorial(n int) <-chan int {
-	total := 1
+func gen() <-chan int {
 	out := make(chan int)
+
 	go func() {
-		for i := n; i > 0; i-- {
-			total *= i
+		for i := 0; i < 10; i++ {
+			for j := 3; j < 13; j++ {
+
+				out <- j
+			}
 		}
-		out <- total
 		close(out)
 	}()
 
 	return out
 }
+func factorial(in <-chan int) <-chan int {
+	out := make(chan int)
+	go func() {
+		for v := range in {
+
+			out <- fact(v)
+		}
+		close(out)
+	}()
+
+	return out
+}
+
+func fact(n int) int {
+	total := 1
+	for i := n; i > 0; i-- {
+		total *= i
+	}
+
+	return total
+}
+
+// for {
+// 	c <- <-input
+// }
+
+//Take out the value first fron input then put it into channel c
