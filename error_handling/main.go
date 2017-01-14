@@ -20,6 +20,7 @@ func main() {
 	if err != nil {
 		//fmt.Println("Err happened", err)
 		//log.Println("err happened", err)
+
 		log.Fatalln(err)
 		// panic(err)
 	}
